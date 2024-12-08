@@ -35,7 +35,7 @@ if ($note->create()) {
     'title' => $note->title,
     'content' => $note->content,
     'creator_id' => $note->creator_id,
-    'creator_name' => $note->creator_name,
+    //'creator_name' => $note->creator_name,
     'updatedAt' => $note->updated_at
   );
 

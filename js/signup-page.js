@@ -8,7 +8,7 @@ $(document).ready(function() {
     loginBtn.click(function() {
         errorLbl.text("");
         $.ajax({
-            url: 'api/user/signup.php',
+            url: '/php-simple-note-app/api/user/signup.php',
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',

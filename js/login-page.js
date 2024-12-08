@@ -7,7 +7,7 @@ $(document).ready(function() {
     loginBtn.click(function() {
         errorLbl.text("");
         $.ajax({
-            url: 'api/user/login.php',
+            url: '/php-simple-note-app/api/user/login.php',
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',

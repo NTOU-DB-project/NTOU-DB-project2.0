@@ -17,7 +17,7 @@ $note->id = isset($_GET['id']) ? $_GET['id'] : die();
 $note->read_single();
 
 if ($note->creator_id != $user_id) {
-    header('Location: index.php');
+    header('Location: php-simple-note-app/index.php');
     exit;
 }
 ?>

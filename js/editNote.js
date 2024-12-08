@@ -1,4 +1,8 @@
 $(function () {
+  // Define the base URL for consistent path construction
+  const BASE_URL = '/php-simple-note-app/';
+
+  // Initialize the HTML editor
   const editor = $('.html-editor')
     .dxHtmlEditor({
       height: 740,
@@ -17,8 +21,8 @@ $(function () {
               '14pt',
               '18pt',
               '24pt',
-              '36pt'
-            ]
+              '36pt',
+            ],
           },
           {
             name: 'font',
@@ -30,8 +34,8 @@ $(function () {
               'Lucida Console',
               'Tahoma',
               'Times New Roman',
-              'Verdana'
-            ]
+              'Verdana',
+            ],
           },
           'separator',
           'bold',
@@ -49,7 +53,7 @@ $(function () {
           'separator',
           {
             name: 'header',
-            acceptedValues: [false, 1, 2, 3, 4, 5]
+            acceptedValues: [false, 1, 2, 3, 4, 5],
           },
           'separator',
           'color',
@@ -69,52 +73,57 @@ $(function () {
           'deleteRow',
           'insertColumnLeft',
           'insertColumnRight',
-          'deleteColumn'
-        ]
+          'deleteColumn',
+        ],
       },
       mediaResizing: {
-        enabled: true
-      }
+        enabled: true,
+      },
     })
-    .dxHtmlEditor('instance')
+    .dxHtmlEditor('instance');
 
+  // Save button configuration
   $('#save-btn').dxButton({
     stylingMode: 'contained',
     text: 'Save Note',
     type: 'default',
     width: 120,
     onClick: function () {
-      const currentUrl = new URL(document.location.href)
-      const id = currentUrl.searchParams.get('id')
-      fetch('/api/note/update.php', {
+      const currentUrl = new URL(document.location.href);
+      const id = currentUrl.searchParams.get('id');
+
+      fetch(`${BASE_URL}api/note/update.php`, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: id,
-          content: editor.option('value')
-        })
+          content: editor.option('value'),
+        }),
       })
         .then((response) => {
-          window.location.href = '/index.php'
+          if (!response.ok) throw new Error('Failed to save note');
+          window.location.href = `${BASE_URL}index.php`;
         })
         .catch((error) => {
           DevExpress.ui.notify({
-            message: "couldn't save note",
+            message: "Couldn't save note",
             type: 'error',
             displayTime: 3000,
-            width: 300
-          })
-          console.log(error)
-        })
-    }
-  })
+            width: 300,
+          });
+          console.error(error);
+        });
+    },
+  });
 
+  // Back button configuration
   $('#back-btn').dxButton({
     stylingMode: 'outlined',
     text: 'Go to notes',
     type: 'default',
     width: 120,
     onClick: function () {
-      window.location.href = '/index.php'
-    }
-  })
-})
+      window.location.href = `${BASE_URL}index.php`;
+    },
+  });
+});

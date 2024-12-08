@@ -47,12 +47,12 @@ class Note
   {
     // Create query
     $query = 'SELECT u.name as creator_name, n.id, n.creator_id, n.title, n.content, n.updated_at
-                                    FROM ' . $this->table . ' n
-                                    LEFT JOIN
-                                      users u ON n.creator_id = u.id
-                                    WHERE
-                                      n.id = ?
-                                    LIMIT 0,1';
+              FROM ' . $this->table . ' n
+              LEFT JOIN
+                users u ON n.creator_id = u.id
+              WHERE
+                n.id = ?
+              LIMIT 0,1';
 
     // Prepare statement
     $stmt = $this->conn->prepare($query);
