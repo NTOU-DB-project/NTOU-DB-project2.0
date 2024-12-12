@@ -14,7 +14,7 @@
 <body>
   <div class="upper-container">
     <div class="imgcontainer">
-      <img src="assets/avatar.png" alt="Avatar" class="avatar">
+      <img src="assets/welcome.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
