@@ -21,13 +21,13 @@
       <label for="input-email"><b>Email</b></label>
       <input id="input-email" type="text" placeholder="Enter Username">
 
-      <label for="input-password"><b>Password</b></label>
+      <label for="input-password"><b>密碼</b></label>
       <input id="input-password" type="password" placeholder="Enter Password">
       <div id="lbl-error"> </div>
-      <button id="btn-login" class="btn btn-outline-success w-100">Login</button>
+      <button id="btn-login" class="btn btn-outline-success w-100">登入</button>
 
       <div class="container" style="background-color:#f1f1f1; text-align: center;">
-        <span>You don't have an account ? <a class="btn btn-outline-primary" href="signup.php">Sign Up</a></span>
+        <span>還沒有帳號 ? <a class="btn btn-outline-primary" href="signup.php">註冊</a></span>
       </div>
     </div>
   </div>

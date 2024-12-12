@@ -15,7 +15,7 @@ $user = User::get_by_id($user_id);
     <div class="notes-backdrop">
         <div class="header">
             <span class="left-center-logo"></span>
-            <span class="logo"><?= "hello $user->name" ?></span>
+            <span class="logo"><?= " $user->name, welcome to use note app!" ?></span>
             <span class="right-center-logo">
                 <div id="add-note-btn"></div>
                 <div id="logout-btn"></div>
