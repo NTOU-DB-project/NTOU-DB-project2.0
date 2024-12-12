@@ -1,5 +1,6 @@
 body {
-    background-color: #D2D2D2;
+    background: linear-gradient(to right, #a9a9a9, #c0c0c0) !important;
+    /* background-color: #D2D2D2 !important; */
 }
 
 #lbl-error {
@@ -26,7 +27,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+/* button {
   background-color: #04AA6D;
   color: white;
   padding: 14px 20px;
@@ -34,11 +35,16 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
-}
+} */
 
 /* Add a hover effect for buttons */
-button:hover {
-  opacity: 0.8;
+/* button{
+  transition: transform 0.2s;
+} */
+
+button:hover, a:hover {
+  /* opacity: 0.8; */
+  transform: scale(1.01);
 }
 
 /* Center the avatar image inside this container */
