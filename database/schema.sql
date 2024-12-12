@@ -16,3 +16,12 @@ CREATE TABLE `notes` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (creator_id) REFERENCES users(id)
 );
+
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `note_id` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (note_id) REFERENCES notes(id)
+)
+

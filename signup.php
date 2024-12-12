@@ -18,19 +18,19 @@
     </div>
 
     <div class="container">
-      <label for="input-name"><b>Name</b></label>
-      <input id="input-name" type="text" placeholder="Enter Your Name">
+      <label for="input-name"><b>名稱</b></label>
+      <input id="input-name" type="text" placeholder="輸入名稱">
 
       <label for="input-email"><b>Email</b></label>
-      <input id="input-email" type="text" placeholder="Enter Email">
+      <input id="input-email" type="text" placeholder="輸入 Email">
 
-      <label for="input-password"><b>Password</b></label>
-      <input id="input-password" type="password" placeholder="Enter Password">
+      <label for="input-password"><b>密碼</b></label>
+      <input id="input-password" type="password" placeholder="輸入密碼">
       <div id="lbl-error"> </div>
-      <button id="btn-signup" class="btn btn-outline-success w-100">Sign Up</button>
+      <button id="btn-signup" class="btn btn-outline-success w-100">註冊</button>
 
       <div class="container" style="background-color:#f1f1f1; text-align: center;">
-        <span>You already have an account ? <a class="btn btn-outline-primary" href="login.php">Login</a></span>
+        <span>已經有帳戶了 ? <a class="btn btn-outline-primary" href="login.php">登入</a></span>
       </div>
     </div>
   </div>

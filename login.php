@@ -19,10 +19,10 @@
 
     <div class="container">
       <label for="input-email"><b>Email</b></label>
-      <input id="input-email" type="text" placeholder="Enter Username">
+      <input id="input-email" type="text" placeholder="輸入 Email">
 
       <label for="input-password"><b>密碼</b></label>
-      <input id="input-password" type="password" placeholder="Enter Password">
+      <input id="input-password" type="password" placeholder="輸入密碼">
       <div id="lbl-error"> </div>
       <button id="btn-login" class="btn btn-outline-success w-100">登入</button>
 

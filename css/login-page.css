@@ -26,22 +26,6 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-/* button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-} */
-
-/* Add a hover effect for buttons */
-/* button{
-  transition: transform 0.2s;
-} */
-
 button:hover, a:hover {
   /* opacity: 0.8; */
   transform: scale(1.01);
