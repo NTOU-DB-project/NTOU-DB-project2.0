@@ -2,6 +2,15 @@ $(function () {
   // Ensure all paths are consistent
   const BASE_URL = '/php-simple-note-app/';
 
+$('#image-bank').dxButton({
+  icon: 'plus',
+  type: 'danger',
+  width: 120,
+  onClick: function (){
+    window.location.href=`${BASE_URL}imageBank.php`;
+  }
+});
+
   $('#logout-btn').dxButton({
     stylingMode: 'contained',
     text: 'logout',
@@ -59,6 +68,7 @@ $(function () {
       width: 500,
       height: 350,
       showTitle: true,
+      backgroundColor: 'white',
       title: '新增筆記',
       closeOnOutsideClick: true,
       contentTemplate: () => {

@@ -25,10 +25,10 @@ try {
     // Duplicate entry error code
     if ($e->getCode() == 23000) {
         $code = 401;
-        $message = "Email you entered already used.";
+        $message = "This e-mail is already used.";
     } else {
         $code = 500;
-        $message = "Error occurred while creating the user.";
+        $message = "Sorrt, some errors occurred while creating account.";
     }
     http_response_code($code);
     echo json_encode(array('message' => $message));
