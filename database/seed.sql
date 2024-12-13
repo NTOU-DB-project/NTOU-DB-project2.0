@@ -16,11 +16,10 @@ VALUES (
     '2021-06-28 17:31:05'
 );
 
-INSERT INTO `note_auths` (`user_id`, `note_id`, `can_read`, `can_write`, `creator_id`)
+INSERT INTO `note_auths` (`user_id`, `note_id`, `can_read`, `creator_id`)
 VALUES (
     2,
     16,
-    f,
     f,
     3
 );
