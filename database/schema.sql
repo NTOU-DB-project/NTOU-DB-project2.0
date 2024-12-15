@@ -23,11 +23,12 @@ CREATE TABLE `note_auths` (
   `can_read` BIT,
   `can_write` BIT,
   `creator_id` int(11) Not NULL,
-  PRIMARY KEY(`user_id`),
+  PRIMARY KEY(`user_id`, `note_id`),
   FOREIGN KEY (creator_id) REFERENCES users(id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN key (note_id) REFERENCES notes(id)
 );
+
 CREATE TABLE `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `note_id` int(11) NOT NULL,

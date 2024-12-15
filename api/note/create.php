@@ -14,8 +14,7 @@ include_once "../../middlewares/api-auth.php";
 $database = new Database();
 $db = $database->connect();
 
-
-// Instantiate blog post object
+// Instantiate note object
 $note = new Note($db);
 $noteAuth = new NoteAuth($db);
 
@@ -32,6 +31,7 @@ if ($note->create()) {
   $note->id = $db->lastInsertId();
   $note->read_single();
 
+  // Grant can_read permission to the creator
   $noteAuth->user_id = $user_id;
   $noteAuth->note_id = $note->id;
   $noteAuth->can_read = 1;

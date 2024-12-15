@@ -39,4 +39,25 @@ class NoteAuth
         // Return the result
         return $stmt;
     }
+    public function updatePermission()
+    {
+        // SQL query to insert or update permissions
+        $query = 'INSERT INTO ' . $this->table . ' (user_id, note_id, can_read, creator_id)
+                  VALUES (:user_id, :note_id, :can_read, :creator_id)
+                  ON DUPLICATE KEY UPDATE 
+                  can_read = :can_read';
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Bind parameters
+        $stmt->bindParam(':user_id', $this->user_id);
+        $stmt->bindParam(':note_id', $this->note_id);
+        $stmt->bindParam(':can_read', $this->can_read, PDO::PARAM_BOOL);
+        $stmt->bindParam(':creator_id', $this->creator_id);
+
+        // Execute query
+        return $stmt->execute();
+    }
+
 }

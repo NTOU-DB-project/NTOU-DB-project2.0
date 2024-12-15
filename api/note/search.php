@@ -35,6 +35,7 @@ if ($num > 0) {
     $permission = $noteAuth->checkPermission()->fetch(PDO::FETCH_ASSOC);
 
     // Log permission for debugging
+    error_log("Checking permission for user_id: $user_id, note_id: $id");
     error_log("Permission: " . json_encode($permission));
 
     if ($permission && $permission['can_read']) {
@@ -47,6 +48,8 @@ if ($num > 0) {
       );
 
       array_push($notes_arr, $notes_item);
+    } else {
+      error_log("No read permission for user_id: $user_id, note_id: $id");
     }
   }
 
