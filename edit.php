@@ -51,7 +51,7 @@ if ($note->creator_id != $user_id) {
             <h3>想要分享你的筆記嗎?</h3>
             <form id="grant-permission-form">
                 <div class="mb-3">
-                    <label for="user-email">請輸入他的 username!</label>
+                    <label for="user-email">分享之前請記得保存 避免資料遺失~</label>
                     <input type="email" id="user-email" class="form-control" placeholder="輸入對方的 username">
                 </div>
                 <button type="submit" class="btn btn-outline-primary mt-2">分享</button>
