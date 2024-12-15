@@ -50,6 +50,7 @@ $('#image-bank').dxButton({
           width: 300,
         });
         showNotes();
+        event.target.reset();
         popup.hide();
       })
       .catch((error) => {

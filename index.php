@@ -29,7 +29,7 @@ $user = User::get_by_id($user_id);
                 </span>
                 <span class="logo"><?= " $user->name, welcome to use note app!" ?></span>
                 <span class="right-center-logo">
-                    <div id="image-bank" class="btn btn-primary">Images</div>
+                    <!-- <div id="image-bank" class="btn btn-primary">Images</div> -->
                     <div id="add-note-btn" class="btn btn-success">新增筆記</div>
                     <div id="logout-btn" class="btn btn-outline-danger">登出</div>
                 </span>

@@ -25,6 +25,13 @@ $(document).ready(function () {
             });
     });
 
+    // $('#search-input').kepress(function (event) {
+    //     if(event.key === 'Enter') {
+    //         event.preventDefault();
+    //         $('#search-form').submit();
+    //     }
+    // });
+
     const renderNotes = function (data) {
         $.each(data, function (key, val) {
             const tmp = document.createElement('DIV');
