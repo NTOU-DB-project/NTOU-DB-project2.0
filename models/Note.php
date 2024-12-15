@@ -136,26 +136,42 @@ class Note
   // Delete Note
   public function delete()
   {
-    // Create query
-    $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
-
-    // Prepare statement
+    // Delete related note_auths records
+    $query = 'DELETE FROM note_auths WHERE note_id = :note_id';
     $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':note_id', $this->id);
+    $stmt->execute();
 
-    // Clean data
-    $this->id = htmlspecialchars(strip_tags($this->id));
-
-    // Bind data
+    // Delete the note
+    $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+    $stmt = $this->conn->prepare($query);
     $stmt->bindParam(':id', $this->id);
 
-    // Execute query
     if ($stmt->execute()) {
       return true;
     }
 
-    // Print error if something goes wrong
-    printf("Error: %s.\n", $stmt->error);
+    // Log error for debugging
+    error_log("Error executing query: " . $stmt->errorInfo());
 
     return false;
+  }
+
+  public function search($search_term)
+  {
+    $query = 'SELECT u.name as creator_name, n.id, n.creator_id, n.title, n.content, n.updated_at
+    FROM ' . $this->table . '  n
+    LEFT JOIN users u ON n.creator_id = u.id
+    WHERE n.title LIKE ? ';
+
+    $stmt = $this->conn->prepare($query);
+
+    $search_term = "%{$search_term}%";
+    $stmt->bindParam(1, $search_term);
+    // $stmt->bindParam(2, $search_term);
+
+    $stmt->execute();
+
+    return $stmt;
   }
 }

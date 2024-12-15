@@ -7,6 +7,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
 include_once '../../config/Database.php';
 include_once '../../models/Note.php';
+include_once '../../models/NoteAuth.php';
 include_once "../../middlewares/api-auth.php";
 
 // Instantiate DB & connect
@@ -16,6 +17,7 @@ $db = $database->connect();
 
 // Instantiate blog post object
 $note = new Note($db);
+$noteAuth = new NoteAuth($db);
 
 // Get raw posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -29,6 +31,12 @@ if ($note->create()) {
 
   $note->id = $db->lastInsertId();
   $note->read_single();
+
+  $noteAuth->user_id = $user_id;
+  $noteAuth->note_id = $note->id;
+  $noteAuth->can_read = 1;
+  $noteAuth->creator_id = $user_id;
+  $noteAuth->updatePermission();
 
   $note_item = array(
     'id' => $note->id,
