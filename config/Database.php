@@ -4,7 +4,7 @@
     private $host = 'localhost';
     private $db_name = 'note_app';
     private $username = 'root';
-    private $password = 'OMOqJ9JDwKHT5Ia';
+    private $password = '';
     private $port = '3306'; 
     private $conn;
 

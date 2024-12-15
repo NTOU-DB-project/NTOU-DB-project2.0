@@ -11,6 +11,16 @@
   margin: 0;
 }
 
+.scale-up {
+  transform: scale(1.02);
+}
+
+span div{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 hr {
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 16px;

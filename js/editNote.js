@@ -85,7 +85,7 @@ $(function () {
   // Save button configuration
   $('#save-btn').dxButton({
     stylingMode: 'contained',
-    text: 'Save Note',
+    text: '保存',
     type: 'default',
     width: 120,
     onClick: function () {
@@ -119,7 +119,7 @@ $(function () {
   // Back button configuration
   $('#back-btn').dxButton({
     stylingMode: 'outlined',
-    text: 'Go to notes',
+    text: '返回',
     type: 'default',
     width: 120,
     onClick: function () {

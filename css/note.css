@@ -18,7 +18,7 @@
 
 .notes-backdrop {
   background: #251b43; /* fallback */
-  background-image: url('../assets/notes-backdrop.png');
+  background-image: url('../assets/night.png');
   background-size: cover;
   position: fixed;
   top: 0;
@@ -43,7 +43,7 @@
   position: relative;
   width: 260px;
   height: 330px;
-  background-color: #fafafa;
+  background-color: white;
   transition: all 0.2s ease-in-out;
   border-radius: 10px;
   cursor: pointer;
@@ -55,6 +55,8 @@
 
 .note-card:hover {
   transform: scale(1.02);
+  background-color: gold;
+  
 }
 
 .note-delete-btn {

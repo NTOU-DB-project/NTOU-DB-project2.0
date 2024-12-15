@@ -21,7 +21,7 @@ try {
         $message = "Invalid email or password.";
     } else {
         $code = 500;
-        $message = "Error occurred while logging in.";
+        $message = "Sorry, some error occurred while logging in.";
     }
     http_response_code($code);
     echo json_encode(array('message' => $message));

@@ -6,6 +6,9 @@ $user = User::get_by_id($user_id);
 ?>
 
 <link rel="stylesheet" href="./css/note.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+    crossorigin="anonymous">
 <script type="text/javascript" src="./js/notes.js"></script>
 
 </head>
@@ -13,12 +16,13 @@ $user = User::get_by_id($user_id);
 <body class="dx-viewport">
 
     <div class="notes-backdrop">
-        <div class="header">
+        <div class="header scale-up">
             <span class="left-center-logo"></span>
-            <span class="logo"><?= "hello $user->name" ?></span>
+            <span class="logo" ><?= " $user->name, welcome to use note app!" ?></span>
             <span class="right-center-logo">
-                <div id="add-note-btn"></div>
-                <div id="logout-btn"></div>
+                <div id="image-bank" class="btn btn-primary">您的圖庫</div>
+                <div id="add-note-btn" class="btn btn-success">新增筆記</div>
+                <div id="logout-btn" class="btn btn-outline-danger">登出</div>
             </span>
         </div>
         <div id="add-note-popup"></div>
@@ -27,6 +31,8 @@ $user = User::get_by_id($user_id);
             </div>
         </div>
     </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
 </body>
 <?php
 include_once "./templates/footer.php";
