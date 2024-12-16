@@ -30,7 +30,7 @@ if ($num > 0) {
     extract($row);
 
     // Check if the user has permission to read the note
-    $noteAuth->user_id = $user_id;
+    $noteAuth->email = $user_id;
     $noteAuth->note_id = $id;
     $permission = $noteAuth->checkPermission()->fetch(PDO::FETCH_ASSOC);
 

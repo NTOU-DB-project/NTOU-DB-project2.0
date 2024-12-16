@@ -108,8 +108,8 @@ class Note
   {
     // Create query
     $query = 'UPDATE ' . $this->table . '
-                                SET content = :content
-                                WHERE id = :id';
+              SET content = :content
+              WHERE id = :id';
 
     // Prepare statement
     $stmt = $this->conn->prepare($query);

@@ -20,7 +20,7 @@ $note_auth = new NoteAuth(db: $db);
 $data = json_decode(file_get_contents("php://input"));
 
 // Set user_id to update
-$note_auth->user_id = $user_id;
+$note_auth->email = $user_id;
 $note_auth->note_id = $data->id;
 $note_auth->creator_id = $data->creator_id;
 $note_auth->can_read = $data->can_read;

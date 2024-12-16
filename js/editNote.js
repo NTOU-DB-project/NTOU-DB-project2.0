@@ -91,7 +91,7 @@ $(function () {
     onClick: function () {
       const currentUrl = new URL(document.location.href);
       const id = currentUrl.searchParams.get('id');
-
+      console.log(editor.option('value'));
       fetch(`${BASE_URL}api/note/update.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -102,6 +102,7 @@ $(function () {
       })
         .then((response) => {
           if (!response.ok) throw new Error('Failed to save note');
+
           window.location.href = `${BASE_URL}index.php`;
         })
         .catch((error) => {
@@ -118,12 +119,51 @@ $(function () {
 
   // Back button configuration
   $('#back-btn').dxButton({
+    
     stylingMode: 'outlined',
     text: '返回',
     type: 'default',
     width: 120,
     onClick: function () {
       window.location.href = `${BASE_URL}index.php`;
+    },
+  });
+
+  // Back button configuration
+  $('#share-btn').dxButton({
+    stylingMode: 'outlined',
+    text: '分享',
+    type: 'default',
+    width: 120,
+    onClick: function () {
+      document.getElementById('user-email').value = ''
+      const currentUrl = new URL(document.location.href);
+      const id = currentUrl.searchParams.get('id');
+      const email = document.getElementById("user-email").value;
+      const user_id = sessionData.user_id;
+
+      fetch(`${BASE_URL}api/note_auth/updatePermission.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          note_id: id,
+          can_read: true,
+          creator_id: user_id,
+        }),
+      })
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to grant auth to the email');
+      })
+      .catch((error) => {
+        DevExpress.ui.notify({
+          message: "Couldn't grant auth",
+          type: 'error',
+          displayTime: 3000,
+          width: 300,
+        });
+        console.error(error);
+      });
     },
   });
 });
