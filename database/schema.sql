@@ -18,13 +18,13 @@ CREATE TABLE `notes` (
 );
 
 CREATE TABLE `note_auths` (
-  `email` varchar(255) NOT NULL,
+  `user_id` int (11) NOT NULL,
   `note_id` int (11) NOT NULL,
   `can_read` BIT,
   `creator_id` int(11) Not NULL,
-  PRIMARY KEY(`email`, `note_id`),
+  PRIMARY KEY(`user_id`, `note_id`),
   FOREIGN KEY (creator_id) REFERENCES users(id),
-  FOREIGN KEY (email) REFERENCES users(email),
+  FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN key (note_id) REFERENCES notes(id)
 );
 

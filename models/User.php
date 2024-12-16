@@ -12,6 +12,9 @@
     public $email;
     public $created_at;
 
+    public function __construct($db) {
+      User::$conn = $db;
+    }
     public static function set_connection($conn) {
       User::$conn = $conn;
     }
@@ -34,6 +37,20 @@
       return User::from_row($row);
     }
 
+    public static function get_by_email($email) {
+      $query = "SELECT * FROM " . User::$table . " WHERE email = :email";
+      $stmt = User::$conn->prepare($query);
+      $stmt->bindParam(":email", $email);
+      $stmt->execute();
+
+      if ($stmt->rowCount() === 0) {
+        return false;
+      }
+
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      return User::from_row($row);
+    }
     public static function get_by_id($id) {
       $query = "SELECT * FROM " . User::$table . " WHERE id = :id";
       $stmt = User::$conn->prepare($query);
@@ -74,13 +91,13 @@
     }
 
     public static function from_row($row) {
-      $user = new User();
+      $user = new User(User::$conn); // Pass the static connection
       $user->id = $row['id'];
       $user->name = $row['name'];
       $user->email = $row['email'];
       $user->created_at = $row['created_at'];
       return $user;
-    }
+  }
     
     public function to_assoc() {
       return array(
