@@ -58,6 +58,11 @@ class NoteAuth
 
         // Execute query
         return $stmt->execute();
+        if (!$stmt->execute()) {
+            error_log("SQL Error: " . $stmt->errorInfo()[2]);
+            return false;
+        }
+    
     }
 
 }

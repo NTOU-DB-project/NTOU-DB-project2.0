@@ -16,12 +16,24 @@ $note->id = isset($_GET['id']) ? $_GET['id'] : die();
 
 $note->read_single();
 
-if ($note->creator_id != $user_id) {
+/*if ($note->creator_id != $user_id) {
     header('Location: php-simple-note-app/index.php');
     exit;
-}
+}*/
+
+// Start session and get user_id
+$user_id = $_SESSION['user_id'] ?? null;
 ?>
 
+<script>
+    // Embed PHP session data in JavaScript
+    const sessionData = {
+        user_id: <?= json_encode($user_id) ?>,
+        note_id: <?= json_encode($note->id) ?>,
+    };
+
+    console.log("Session Data:", sessionData);
+</script>
 <script src="./js/editNote.js"></script>
 <link rel="stylesheet" href="./css/edit-note.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
@@ -54,7 +66,7 @@ if ($note->creator_id != $user_id) {
                     <label for="user-email">分享之前請記得保存 避免資料遺失~</label>
                     <input type="email" id="user-email" class="form-control" placeholder="輸入對方的 username">
                 </div>
-                <button type="submit" class="btn btn-outline-primary mt-2">分享</button>
+                <div id="share-btn"></div>
             </form>
         </div>
     </div>

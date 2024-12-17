@@ -32,7 +32,7 @@ if ($num > 0) {
       'title' => $title,
       'content' => htmlspecialchars_decode($content),
       'creator_id' => $creator_id,
-      //'creator_name' => $creator_name,
+      'creator_name' => $creator_name,
       'updated_at' => $updated_at
     );
 

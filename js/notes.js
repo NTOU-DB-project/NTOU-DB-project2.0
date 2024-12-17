@@ -104,27 +104,26 @@ $('#image-bank').dxButton({
     })
     .dxPopup('instance');
 
-  const showNotes = function () {
-    fetch(`${BASE_URL}api/note/read.php`)
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to fetch notes');
-        return response.json();
-      })
-      .then((data) => {
-        $('.notes-grid').empty();
-        $('.empty-center').remove();
-        renderNotes(data);
-      })
-      .catch((error) => {
-        DevExpress.ui.notify({
-          message: 'Connection problem',
-          type: 'error',
-          displayTime: 3000,
-          width: 300,
-        });
-        console.log(error);
-      });
-  };
+    const showNotes = function () {
+      fetch('api/note/read.php')
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          $('.notes-grid').empty()
+          $('.empty-center').remove()
+          renderNotes(data)
+        })
+        .catch((error) => {
+          DevExpress.ui.notify({
+            message: 'Connection problem',
+            type: 'error',
+            displayTime: 3000,
+            width: 300
+          })
+          console.log(error)
+        })
+    }
+    
 
   const renderNotes = function (data) {
     $.each(data, function (key, val) {
