@@ -32,18 +32,18 @@ if ($note->create()) {
   $note->read_single();
 
   // Grant can_read permission to the creator
-  // $noteAuth->email = $user_id;
-  // $noteAuth->note_id = $note->id;
-  // $noteAuth->can_read = 1;
-  // $noteAuth->creator_id = $user_id;
-  // $noteAuth->updatePermission();
+  $noteAuth->user_id = $user_id;
+  $noteAuth->note_id = $note->id;
+  $noteAuth->can_read = 1;
+  $noteAuth->creator_id = $user_id;
+  $noteAuth->updatePermission();
 
   $note_item = array(
     'id' => $note->id,
     'title' => $note->title,
     'content' => $note->content,
     'creator_id' => $note->creator_id,
-    //'creator_name' => $note->creator_name,
+    'creator_name' => $note->creator_name,
     'updatedAt' => $note->updated_at
   );
 

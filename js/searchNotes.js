@@ -109,4 +109,5 @@ $(document).ready(function () {
         window.location.href = `${BASE_URL}edit.php?id=${id}`;
     };
 
+    showNotes();
 });

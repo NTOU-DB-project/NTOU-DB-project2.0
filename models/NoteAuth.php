@@ -57,6 +57,7 @@ class NoteAuth
         $stmt->bindParam(':creator_id', $this->creator_id);
 
         // Execute query
+        return $stmt->execute();
         if (!$stmt->execute()) {
             error_log("SQL Error: " . $stmt->errorInfo()[2]);
             return false;

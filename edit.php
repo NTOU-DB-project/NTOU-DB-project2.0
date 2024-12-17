@@ -16,10 +16,10 @@ $note->id = isset($_GET['id']) ? $_GET['id'] : die();
 
 $note->read_single();
 
-if ($note->creator_id != $user_id) {
+/*if ($note->creator_id != $user_id) {
     header('Location: php-simple-note-app/index.php');
     exit;
-}
+}*/
 
 // Start session and get user_id
 $user_id = $_SESSION['user_id'] ?? null;
