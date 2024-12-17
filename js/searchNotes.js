@@ -73,54 +73,6 @@ $(document).ready(function () {
         $(document).off('click', '.note-delete-btn', handleNoteDelete);
         $(document).on('click', '.note-delete-btn', handleNoteDelete);
     };
-    // const renderNotes = function (data) {
-    // Clear the grid and padded-notes-area before rendering new results
-    //     $('.notes-grid').empty();
-    //     $('.padded-notes-area').empty(); // Clear previous empty states
-
-    //     if (Array.isArray(data) && data.length === 0) {
-    //         const emptyHtml = `
-    //             <div class="empty-center">
-    //                 <div class="empty-container">
-    //                     <div class="empty-wrapper">
-    //                         <img src="${BASE_URL}assets/empty-notes.svg" height="200" width="200" alt="empty" />
-    //                         <h3>Empty notes</h3>
-    //                         <p>Press the add button on the top right to add a note</p>
-    //                     </div>
-    //                 </div>
-    //             </div>`;
-    //         $('.padded-notes-area').append(emptyHtml);
-    //         return; // Stop further execution since there are no notes to render
-    //     }
-
-    //     // If data is not empty, render the notes
-    //     $.each(data, function (key, val) {
-    //         const tmp = document.createElement('DIV');
-    //         tmp.innerHTML = val.content;
-    //         const stringContent = tmp.textContent || tmp.innerText || '';
-
-    //         const noteCardHtml = `
-    //             <div class="note-card" data-id=${val.id}>
-    //                 <div class="note-header-wrapper">
-    //                     <h3>${val.title}</h3>
-    //                     <button class="note-delete-btn" data-id=${val.id}>
-    //                         <i class="fa fa-trash"></i>
-    //                     </button>
-    //                 </div>
-    //                 Last Updated: ${luxon.DateTime.fromSQL(val.updated_at).toRelative()}
-    //                 <div class="note-card-content">${stringContent}</div>
-    //             </div>`;
-
-    //         $('.notes-grid').append(noteCardHtml);
-    //     });
-
-    //     // Re-bind event listeners
-    //     $(document).off('click', '.note-card', editNote);
-    //     $(document).on('click', '.note-card', editNote);
-
-    //     $(document).off('click', '.note-delete-btn', handleNoteDelete);
-    //     $(document).on('click', '.note-delete-btn', handleNoteDelete);
-    // };
 
 
     const handleNoteDelete = function (event) {
