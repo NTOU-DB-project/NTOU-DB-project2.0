@@ -28,7 +28,7 @@ try {
         $message = "This e-mail is already used.";
     } else {
         $code = 500;
-        $message = "Sorrt, some errors occurred while creating account.";
+        $message = "Sorry, some errors occurred while creating account.";
     }
     http_response_code($code);
     echo json_encode(array('message' => $message));

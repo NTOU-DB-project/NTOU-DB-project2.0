@@ -77,7 +77,7 @@ UPDATE `notes` SET `creator_id` = 2 WHERE `id` = 1; -- 這應該成功
 -- 更新筆記的 creator_id 為無效的用戶 ID
 UPDATE `notes` SET `creator_id` = 999 WHERE `id` = 1; -- 這應該會失敗
 
---------------------測試刪除外鍵的數據-
+-- ------------------測試刪除外鍵的數據
 
 -- 刪除有關聯筆記的用戶
 DELETE FROM `users` WHERE `id` = 1; -- 這應該會失敗，因為有筆記和權限依賴於這個用戶

@@ -45,7 +45,7 @@ $total_notes = $note->count_notes($user_id);
         <div id="add-note-popup"></div>
 
         <div class="padded-notes-area">
-            <div class="btn btn-success">目前筆記數量: <?= $total_notes ?></div>
+            <div class="btn btn-success">您創建的筆記總數量: <?= $total_notes ?></div>
             <div class="notes-grid">
             </div>
         </div>
