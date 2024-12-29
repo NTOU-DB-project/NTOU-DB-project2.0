@@ -25,7 +25,7 @@ CREATE TABLE `note_auths` (
   PRIMARY KEY(`user_id`, `note_id`),
   FOREIGN KEY (creator_id) REFERENCES users(id),
   FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN key (note_id) REFERENCES notes(id)
+  FOREIGN key (note_id) REFERENCES notes(id) ON DELETE CASCADE
 );
 
 -- CREATE TABLE `image` (
