@@ -180,4 +180,24 @@ class Note
 
     return $stmt;
   }
+  public function count_notes($user_id)
+  {
+      $query = 'SELECT COUNT(*) as total_notes FROM ' . $this->table . ' WHERE creator_id = ?';
+
+      // Prepare statement
+      $stmt = $this->conn->prepare($query);
+
+      // Bind parameter
+      $stmt->bindParam(1, $user_id);
+
+      // Execute query
+      $stmt->execute();
+
+      // Fetch the result
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      // Return the count
+      return $row['total_notes'] ?? 0;
+  }
+
 }
