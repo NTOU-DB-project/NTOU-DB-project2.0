@@ -6,6 +6,14 @@ VALUES (
     '$2y$10$NOt/NG5ILpL1p0RA2aCgFOE8.yWZQpgv8gVnLpAlAvEaroYQ3657m', 
     '2024-12-16 16:35:48'
 );--password = zxcv7898
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`) 
+VALUES (
+    1, 
+    'brian', 
+    'bbt2587898123@gmail.com', 
+    '$2y$10$NOt/NG5ILpL1p0RA2aCgFOE8.yWZQpgv8gVnLpAlAvEaroYQ3657m', 
+    '2024-12-16 16:35:48'
+);--password = zxcv7898
 
 INSERT INTO `notes` (`id`, `creator_id`, `title`, `content`, `updated_at`) 
 VALUES (
@@ -25,4 +33,6 @@ VALUES (
 );
 
 --password for user is shortpass
+
+
 
