@@ -32,7 +32,61 @@ VALUES (
     3
 );
 
+
+-- 插入用戶數據
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`) 
+VALUES 
+(1, 'Alice', 'alice@example.com', '$2y$10$examplepasswordhash1', '2024-12-16 16:35:48'),
+(2, 'Bob', 'bob@example.com', '$2y$10$examplepasswordhash2', '2024-12-16 16:35:48');
+
+-- 插入筆記數據
+INSERT INTO `notes` (`id`, `creator_id`, `title`, `content`, `updated_at`) 
+VALUES 
+(1, 1, 'Alice\'s Note', 'This is a note created by Alice.', '2024-12-16 16:35:48'),
+(2, 2, 'Bob\'s Note', 'This is a note created by Bob.', '2024-12-16 16:35:48');
+
+-- 插入筆記權限數據
+INSERT INTO `note_auths` (`user_id`, `note_id`, `can_read`, `creator_id`)
+VALUES 
+(2, 1, 1, 1), -- Bob has read permission on Alice's note
+(1, 2, 1, 2); -- Alice has read permission on Bob's note
+
+
 --password for user is shortpass
 
+-- 嘗試插入無效筆記數據（無效的 creator_id）
+INSERT INTO `notes` (`id`, `creator_id`, `title`, `content`, `updated_at`) 
+VALUES 
+(3, 999, 'Invalid Note', 'Note with an invalid creator_id.', '2024-12-24 16:35:48'); -- 這應該會失敗
 
+-- 嘗試插入無效的筆記權限數據（無效的 user_id 和 note_id）
+INSERT INTO `note_auths` (`user_id`, `note_id`, `can_read`, `creator_id`)
+VALUES 
+(99129, 1, 1, 1), -- 無效的 user_id
+(2871823, 999, 1, 1); -- 無效的 note_id
 
+-- 更新筆記的 creator_id 為有效的用戶 ID
+UPDATE `notes` SET `creator_id` = 2 WHERE `id` = 1; -- 應該成功
+
+-- 更新筆記的 creator_id 為無效的用戶 ID
+UPDATE `notes` SET `creator_id` = 99129 WHERE `id` = 1; -- 應該失敗
+
+-- 更新筆記的 creator_id 為有效的用戶 ID
+UPDATE `notes` SET `creator_id` = 2 WHERE `id` = 1; -- 這應該成功
+
+-- 更新筆記的 creator_id 為無效的用戶 ID
+UPDATE `notes` SET `creator_id` = 999 WHERE `id` = 1; -- 這應該會失敗
+
+--------------------測試刪除外鍵的數據-
+
+-- 刪除有關聯筆記的用戶
+DELETE FROM `users` WHERE `id` = 1; -- 這應該會失敗，因為有筆記和權限依賴於這個用戶
+
+-- 刪除有關聯權限的筆記
+DELETE FROM `notes` WHERE `id` = 1; -- 這應該會失敗，因為有權限依賴於這個筆記
+
+-- 刪除筆記權限數據
+DELETE FROM `note_auths` WHERE `user_id` = 2 AND `note_id` = 1; -- 這應該成功
+
+-- 現在可以刪除筆記
+DELETE FROM `notes` WHERE `id` = 1; -- 這應該成功
